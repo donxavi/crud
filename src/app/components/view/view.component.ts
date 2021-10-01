@@ -15,7 +15,7 @@ export class ViewComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router
   ) { }
-  post: any;
+  post: Post | undefined;
   ngOnInit(): void {
     const id = +this._route.snapshot.params['postId'];
     this._postService.find(id).subscribe(
