@@ -4,7 +4,13 @@
         <a href="#" routerLink="/post/create/" class="btn btn-success">Create New Post</a>
     </div>
     
-    
+    <div class="form-group">
+      <input type="text" 
+      class="form-control" 
+      placeholder="Search Posts"
+      [(ngModel)]="searchTerm"
+      (keyup)="search($event)">
+    </div>
     <table class="table table-bordered">
       <tr>
         <th>ID</th>
@@ -12,7 +18,7 @@
         <th>Body</th>
         <th width="220px">Action</th>
       </tr>
-      <tr *ngFor="let post of posts">
+      <tr *ngFor="let post of posts | filter:searchKey:'title'">
         <td>{{ post.id }}</td>
         <td>{{ post.title }}</td>
         <td>{{ post.body }}</td>

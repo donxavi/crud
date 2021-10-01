@@ -10,7 +10,6 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class CreateComponent implements OnInit {
   form!: FormGroup;
-  @Input() postarr: any;
   constructor(
     public _postService: PostService,
     private _router: Router
@@ -21,7 +20,6 @@ export class CreateComponent implements OnInit {
       title: new FormControl('', [Validators.required]),
       body: new FormControl('', [Validators.required])
     });
-    console.log(this.postarr)
   }
 
   get f() {

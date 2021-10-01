@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators'
 import { Post } from '../model/post';
 
@@ -9,6 +9,7 @@ import { Post } from '../model/post';
 })
 export class PostService {
   private apiUrl = "https://jsonplaceholder.typicode.com";
+  public search = new BehaviorSubject<String>("");
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -34,6 +35,10 @@ export class PostService {
 
   delete(id:number) {
     return this._http.delete<Post>(this.apiUrl + '/posts/' + id, this.httpOptions)
+  }
+
+  update(id:number|undefined, post:Post): Observable<Post> {
+    return this._http.put<Post>(this.apiUrl + '/posts' + id, this.httpOptions);
   }
 
 

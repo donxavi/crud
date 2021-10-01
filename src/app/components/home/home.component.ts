@@ -9,6 +9,8 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class HomeComponent implements OnInit {
   posts: Post[] = [];
+  public searchTerm: string = '';
+  public searchKey:string ='';
   constructor(
     private _postService: PostService
   ) { }
@@ -21,6 +23,10 @@ export class HomeComponent implements OnInit {
       },
       err => console.log(err)
     )
+    this._postService.search.subscribe((val:any) => {
+      console.log(val)
+      this.searchKey = val;
+    })
   }
 
   deletePost(id:number){
@@ -28,5 +34,13 @@ export class HomeComponent implements OnInit {
       this.posts = this.posts.filter(item => item.id !== id);  
     })
   }
+
+  search(event:any) {
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm);
+    this._postService.search.next(this.searchTerm);
+  }
+
+  
 
 }
