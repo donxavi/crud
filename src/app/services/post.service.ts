@@ -28,6 +28,14 @@ export class PostService {
     return this._http.get<Post>(this.apiUrl + '/posts/' + id);
   }
 
+  create(post:Post): Observable<Post> {
+    return this._http.post<Post>(this.apiUrl + '/posts', JSON.stringify(post), this.httpOptions)
+  }
+
+  delete(id:number) {
+    return this._http.delete<Post>(this.apiUrl + '/posts/' + id, this.httpOptions)
+  }
+
 
 
 

@@ -18,10 +18,15 @@ export class HomeComponent implements OnInit {
     .subscribe(
       res => {
         this.posts = res;
-        console.log(this.posts)
       },
       err => console.log(err)
     )
+  }
+
+  deletePost(id:number){
+    this._postService.delete(id).subscribe( res => {
+      this.posts = this.posts.filter(item => item.id !== id);  
+    })
   }
 
 }
