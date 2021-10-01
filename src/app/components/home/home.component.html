@@ -1,1 +1,26 @@
-<p>home works!</p>
+<div class="container">
+    <h1 class="text-center">Angular CRUD Example - ItSolutionStuff.com</h1>
+    <div class="text-right my-3">
+        <a href="#" routerLink="/post/create/" class="btn btn-success">Create New Post</a>
+    </div>
+    
+    
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Body</th>
+        <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let post of posts">
+        <td>{{ post.id }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.body }}</td>
+        <td style="width:230px;vertical-align: middle;">
+          <a href="#" [routerLink]="['/post/', post.id, 'view']" class="btn btn-info">View</a>
+          <a href="#" [routerLink]="['/post/', post.id, 'edit']" class="btn btn-primary mx-2">Edit</a>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </table>
+ </div>
