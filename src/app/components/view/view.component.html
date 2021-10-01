@@ -1,1 +1,21 @@
-<p>view works!</p>
+<div class="container" *ngIf="post">
+    <h1 class="text-center">View Post</h1>
+    <div *ngIf="post">
+        <div>
+            <strong>ID:</strong>
+            <p>{{ post.id }}</p>
+        </div>
+        <div>
+            <strong>Title:</strong>
+            <p>{{ post.title }}</p>
+        </div>
+        <div>
+            <strong>Body:</strong>
+            <p>{{ post.body }}</p>
+        </div>
+    </div>
+    <div class="text-right">
+        <a href="#" routerLink="/post/home" class="btn btn-primary">Back</a>
+    </div>
+    
+</div>

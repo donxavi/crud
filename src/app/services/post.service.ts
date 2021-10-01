@@ -22,9 +22,10 @@ export class PostService {
 
   getAll(): Observable<Post[]> {
     return this._http.get<Post[]>(this.apiUrl + '/posts/')
-    // .pipe(
-    //   catchError(this.errorHandler)
-    // )
+  }
+
+  find(id:number): Observable<Post[]> {
+    return this._http.get<Post[]>(this.apiUrl + '/posts/' + id);
   }
 
 
